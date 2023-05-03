@@ -14,14 +14,14 @@ sudo chown spinnaker:spinnaker /home/spinnaker
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
 sudo usermod -aG docker ubuntu
-sudo docker run -p 127.0.0.1:9090:9000 -d --name minio1 -v /mnt/data:/data -v /mnt/config:/root/.minio minio/minio server /data
+sudo docker run -p 9090:9000 -d --name minio1 -v /mnt/data:/data -v /mnt/config:/root/.minio minio/minio server /data
 
 sudo apt-get -y install jq apt-transport-https
 
-MINIO_SECRET_KEY="minioadmin"
-MINIO_ACCESS_KEY="minioadmin"
+MINIO_SECRET_KEY="N9U0mnnnz52BoYUoh"
+MINIO_ACCESS_KEY="AKIAU6ZM"
 
-echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint http://127.0.0.1:9090 \
+echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint http://0.0.0.0:9090 \
     --access-key-id $MINIO_ACCESS_KEY \
     --secret-access-key
 
